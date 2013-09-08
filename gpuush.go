@@ -9,6 +9,7 @@ package main
 import (
 	"bytes"
 	"crypto/md5"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/mattn/go-gtk/glib"
@@ -21,6 +22,7 @@ import (
 	"os"
 	"os/exec"
 	"os/signal"
+	"os/user"
 	"strconv"
 	"strings"
 	"syscall"
@@ -187,8 +189,13 @@ func init() {
 func main() {
 	flag.Parse()
 
-func main() {
-	file, err := ioutil.ReadFile("~/.gpuush")
+	usr, err := user.Current()
+	if err != nil {
+		fmt.Println("Couldn't get home directory:", err)
+		return
+	}
+
+	file, err := ioutil.ReadFile(usr.HomeDir + "/.gpuush")
 	if err != nil {
 		fmt.Println("Config file error:", err)
 		return
