@@ -17,6 +17,13 @@ Once compiled (via `go build` or `go install`), the executable should be placed 
 
 The icon file is read from /usr/local/share/gpuush/icon.png
 
+To configure the user gpuush will upload as, create the file `~/.gpuush` with the contents:
+
+    {
+      "email": "example@example.com",
+      "pass": "hunter2"
+    }
+
 Some external dependencies that may need to be installed are:
 
  - imagemagick
